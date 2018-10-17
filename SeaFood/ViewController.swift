@@ -52,7 +52,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             guard let results = request.results as? [VNClassificationObservation] else{
                 fatalError("Model failed to process !")
             }
-            print(results)
+            
+            if let firstResult = results.first{
+                if firstResult.identifier.contains("hotdog"){
+                    self.navigationItem.title = "Hot dog!"
+                }else{
+                    self.navigationItem.title = "Not Hot dog!"
+                }
+            }
+            
+            
+            
+           // print(results)
         }
         
         
@@ -64,7 +75,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         catch{
             print(error.localizedDescription)
         }
-        
         
     }
 
